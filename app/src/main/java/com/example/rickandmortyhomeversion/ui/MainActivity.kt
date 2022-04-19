@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyhomeversion.api.InterfaceApi
 import com.example.rickandmortyhomeversion.api.RetrofitClient
 import com.example.rickandmortyhomeversion.databinding.ActivityMainBinding
-import com.example.rickandmortyhomeversion.models.CharacterData
+import com.example.rickandmortyhomeversion.models.CharacterDataResponse
 import com.example.rickandmortyhomeversion.models.ResultResponse
 import timber.log.Timber
 
@@ -21,26 +21,23 @@ class MainActivity : AppCompatActivity(), InterfaceContract {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private lateinit var characterData: CharacterData
-
     private lateinit var mainAdapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
+        Timber.tag("%%%").i("Privet")
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
         mainAdapter = MainAdapter(onClick = { sendDataToSecondActivity(it) })
         binding.mainRecyclerView.adapter = mainAdapter
-
         mainPresenter.attach(this)
         mainPresenter.getCharacterDataFromApi()
+
     }
 
-    override fun showCharacters(data: CharacterData) {
+    override fun showCharacters(data: CharacterDataResponse) {
         mainAdapter.setData(data.resultsResponse)
     }
-
 
     override fun dataFailure(t: Throwable) {
         Timber.e(t.message)
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity(), InterfaceContract {
         mainPresenter.detach()
     }
 
-    private fun sendDataToSecondActivity(resultsResponse: ResultResponse) {
+    fun sendDataToSecondActivity(resultsResponse: ResultResponse) {
         val intent = Intent(this@MainActivity, DetailedActivity::class.java)
         intent.putExtra("result", resultsResponse)
         startActivity(intent)

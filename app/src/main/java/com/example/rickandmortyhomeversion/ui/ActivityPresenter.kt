@@ -1,10 +1,11 @@
 package com.example.rickandmortyhomeversion.ui
 
 import com.example.rickandmortyhomeversion.api.InterfaceApi
-import com.example.rickandmortyhomeversion.models.CharacterData
+import com.example.rickandmortyhomeversion.models.CharacterDataResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class ActivityPresenter(private val api: InterfaceApi) {
     private var interfaceContract: InterfaceContract? = null
@@ -19,24 +20,22 @@ class ActivityPresenter(private val api: InterfaceApi) {
 
     fun getCharacterDataFromApi() {
         api.getAllCharacters()
-            .enqueue(object : Callback<CharacterData> {
+            .enqueue(object : Callback<CharacterDataResponse> {
                 override fun onResponse(
-                    call: Call<CharacterData>,
-                    response: Response<CharacterData>
+                    call: Call<CharacterDataResponse>,
+                    response: Response<CharacterDataResponse>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         val characters = response.body()
+                        Timber.tag("%%%").i(characters.toString())
                         interfaceContract?.showCharacters(characters!!)
                     }
                 }
 
-                override fun onFailure(call: Call<CharacterData>, t: Throwable) {
+                override fun onFailure(call: Call<CharacterDataResponse>, t: Throwable) {
                     interfaceContract?.dataFailure(t)
                 }
             })
     }
 }
 
-private fun <T> Call<T>.enqueue(callback: Callback<CharacterData>) {
-
-}

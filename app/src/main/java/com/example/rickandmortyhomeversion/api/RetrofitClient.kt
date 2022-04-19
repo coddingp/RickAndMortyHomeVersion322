@@ -3,7 +3,7 @@ package com.example.rickandmortyhomeversion.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://rickandmortyapi.com/api/character"
+private const val BASE_URL = "https://rickandmortyapi.com/api/"
 
 object RetrofitClient {
     private var retrofit: Retrofit? = null
