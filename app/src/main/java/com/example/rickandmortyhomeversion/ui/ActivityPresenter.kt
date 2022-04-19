@@ -5,7 +5,6 @@ import com.example.rickandmortyhomeversion.models.CharacterDataResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import timber.log.Timber
 
 class ActivityPresenter(private val api: InterfaceApi) {
     private var interfaceContract: InterfaceContract? = null
@@ -27,7 +26,6 @@ class ActivityPresenter(private val api: InterfaceApi) {
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         val characters = response.body()
-                        Timber.tag("%%%").i(characters.toString())
                         interfaceContract?.showCharacters(characters!!)
                     }
                 }

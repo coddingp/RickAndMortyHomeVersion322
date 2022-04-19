@@ -26,7 +26,5 @@ class DetailedActivity : AppCompatActivity() {
             textViewStatus.text = "Status: ${data?.status}"
             textViewSpecies.text = "Species: ${data?.species}"
         }
-
-
     }
 }

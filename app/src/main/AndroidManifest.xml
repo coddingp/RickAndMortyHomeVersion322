@@ -14,7 +14,7 @@
         android:theme="@style/Theme.RickAndMortyHomeVersion">
         <activity
             android:name=".ui.DetailedActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
