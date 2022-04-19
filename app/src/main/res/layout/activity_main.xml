@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LLStyle">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
+        style="@style/LLStyle"
+        android:layout_margin="16dp"
+        tools:listitem="@layout/item" />
+
+</LinearLayout>
