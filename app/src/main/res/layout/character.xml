@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/characterActivity"
-    style="@style/LLStyle"
-    android:background="@color/cardview_dark_background"
+    style="@style/LLStyleForDetails"
     tools:context="ui.MainActivity">
 
     <ImageView
@@ -15,7 +14,8 @@
     <TextView
         android:id="@+id/textViewName"
         style="@style/detailedTextStyle"
-        tools:text="Blub" />
+        tools:text="Blub"
+        />
 
     <TextView
         android:id="@+id/textViewGender"

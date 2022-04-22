@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/LLStyle">
+    style="@style/LLStyle"
+    android:background="@drawable/ic_launcher_background"
+    android:layout_weight="1"
+    >
 
     <ImageView
         android:id="@+id/itemImageView"
         style="@style/imageStyle"
         android:contentDescription="@string/character_description"
-        app:civ_border_color="#1EB1C2"
-        app:civ_border_width="2dp"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+
+        />
 
     <TextView
         android:id="@+id/itemTextView"

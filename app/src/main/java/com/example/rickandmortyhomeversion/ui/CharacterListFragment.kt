@@ -1,5 +1,6 @@
 package com.example.rickandmortyhomeversion.ui
 
+import CharacterFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,12 +58,13 @@ class CharacterListFragment : Fragment(), MainContract {
     }
 
     private fun showDetailsItem(resultResponse: ResultResponse) {
-        val fragment = CharacterFragment()
+        val fragment =  CharacterFragment()
         val bundle = Bundle()
         bundle.putSerializable("result", resultResponse)
         fragment.arguments = bundle
-        replaceFragment (fragment)
+        replaceFragment(fragment)
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

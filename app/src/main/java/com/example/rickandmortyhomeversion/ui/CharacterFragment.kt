@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.rickandmortyhomeversion.databinding.CharacterBinding
 import com.example.rickandmortyhomeversion.models.ResultResponse
-import com.example.rickandmortyhomeversion.ui. databinding.CharacterBinding
 
 class CharacterFragment: Fragment() {
 
@@ -24,7 +24,7 @@ class CharacterFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val data = arguments?.getSerializable("result") as ResultResponse
         with (binding) {
-            context?.let { Glide.with(it).load(data.image).into(imageViewCharacter) }
+            context?.let { Glide.with(it).load(data.image).into(characterImageView) }
             textViewName.text = "Name: ${data.name}"
             textViewGender.text = "Gender: ${data.gender}"
             textViewStatus.text = "Status: ${data.status}"
