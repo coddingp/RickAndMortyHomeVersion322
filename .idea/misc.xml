@@ -5,6 +5,11 @@
       <map>
         <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/activity_detailed.xml" value="0.22" />
         <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/activity_main_prev.xml" value="0.21203703703703702" />
+        <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/character.xml" value="0.1" />
+        <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/characters_list.xml" value="0.21203703703703702" />
+        <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/fragment_for_recycler.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/fragment_rick_and_morty.xml" value="0.21203703703703702" />
         <entry key="..\:/Users/Thed/AndroidStudioProjects/RickAndMortyHomeVersion/app/src/main/res/layout/item.xml" value="0.1" />
       </map>
     </option>

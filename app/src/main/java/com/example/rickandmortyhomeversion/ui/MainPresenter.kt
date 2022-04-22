@@ -6,15 +6,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ActivityPresenter(private val api: InterfaceApi) {
-    private var interfaceContract: InterfaceContract? = null
+class MainPresenter(private val api: InterfaceApi) {
+    private var mainContract: MainContract? = null
 
-    fun attach(interfaceContract: InterfaceContract) {
-        this.interfaceContract = interfaceContract
+    fun attach(mainContract: MainContract) {
+        this.mainContract = mainContract
     }
 
     fun detach() {
-        interfaceContract = null
+        mainContract = null
     }
 
     fun getCharacterDataFromApi() {
@@ -26,12 +26,12 @@ class ActivityPresenter(private val api: InterfaceApi) {
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         val characters = response.body()
-                        interfaceContract?.showCharacters(characters!!)
+                        mainContract?.showCharacters(characters!!)
                     }
                 }
 
                 override fun onFailure(call: Call<CharacterDataResponse>, t: Throwable) {
-                    interfaceContract?.dataFailure(t)
+                    mainContract?.dataFailure(t)
                 }
             })
     }

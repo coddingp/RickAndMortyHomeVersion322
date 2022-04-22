@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rickandmortyhomeversion.R
 import com.example.rickandmortyhomeversion.models.ResultResponse
+import timber.log.Timber
 
 class MainAdapter(
     val onClick: (ResultResponse) -> Unit
@@ -26,7 +27,6 @@ class MainAdapter(
             Glide.with(itemView.context).load(resultsResponse.image).into(imageView)
             textView1.text = resultsResponse.name
             textView2.text = resultsResponse.id.toString()
-
             itemView.setOnClickListener { onClick.invoke(resultsResponse) }
         }
     }
@@ -47,7 +47,7 @@ class MainAdapter(
     fun setData(list: List<ResultResponse>) {
         characters.clear()
         characters.addAll(list)
-
+        Timber.i(list.toString())
         notifyDataSetChanged()
     }
 }

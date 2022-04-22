@@ -4,8 +4,7 @@
     android:id="@+id/characterActivity"
     style="@style/LLStyle"
     android:background="@color/cardview_dark_background"
-    tools:context="ui.DetailedActivity"
-    >
+    tools:context="ui.MainActivity">
 
     <ImageView
         android:id="@+id/characterImageView"

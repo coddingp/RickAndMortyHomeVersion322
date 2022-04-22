@@ -3,6 +3,7 @@ package com.example.rickandmortyhomeversion.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 @Parcelize
 data class ResultResponse(
@@ -30,4 +31,4 @@ data class ResultResponse(
     val url: String,
     @SerializedName("created")
     val created: String
-) : Parcelable
+) : Parcelable, Serializable
