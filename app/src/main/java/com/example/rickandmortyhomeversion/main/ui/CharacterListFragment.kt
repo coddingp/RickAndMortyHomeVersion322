@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyhomeversion.R
 import com.example.rickandmortyhomeversion.common.basemvp.BaseFragmentMvp
 import com.example.rickandmortyhomeversion.databinding.CharactersListBinding
-import com.example.rickandmortyhomeversion.models.CharacterDataResponse
-import com.example.rickandmortyhomeversion.models.ResultResponse
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 

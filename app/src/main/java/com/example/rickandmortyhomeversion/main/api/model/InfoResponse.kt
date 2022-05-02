@@ -1,9 +1,9 @@
-package com.example.rickandmortyhomeversion.models
+package com.example.rickandmortyhomeversion.main.api.model
 
 import com.google.gson.annotations.SerializedName
 
 
-data class Info(
+data class InfoResponse(
     @SerializedName("count")
     val count: Int,
     @SerializedName("pages")

@@ -8,7 +8,6 @@ import androidx.annotation.LayoutRes
 import com.bumptech.glide.Glide
 import com.example.rickandmortyhomeversion.common.basemvp.BaseFragment
 import com.example.rickandmortyhomeversion.databinding.CharacterBinding
-import com.example.rickandmortyhomeversion.models.ResultResponse
 
 class CharacterFragment(@LayoutRes layoutRes: Int): BaseFragment(layoutRes) {
 

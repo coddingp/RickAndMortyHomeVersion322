@@ -1,4 +1,4 @@
-package com.example.rickandmortyhomeversion.models
+package com.example.rickandmortyhomeversion.main.api.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -20,9 +20,9 @@ data class ResultResponse(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("origin")
-    val origin: Origin,
+    val origin: OriginResponse,
     @SerializedName("location")
-    val location: Location,
+    val location: LocationResponse,
     @SerializedName("image")
     val image: String,
     @SerializedName("episode")

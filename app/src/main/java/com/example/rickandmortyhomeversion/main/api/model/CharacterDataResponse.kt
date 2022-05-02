@@ -1,10 +1,10 @@
-package com.example.rickandmortyhomeversion.models
+package com.example.rickandmortyhomeversion.main.api.model
 
 import com.google.gson.annotations.SerializedName
 
 data class CharacterDataResponse(
     @SerializedName("info")
-    val info: Info,
+    val info: InfoResponse,
     @SerializedName("results")
     val resultsResponse: List<ResultResponse>
 )

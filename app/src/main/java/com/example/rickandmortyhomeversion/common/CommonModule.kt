@@ -1,6 +1,6 @@
 package com.example.rickandmortyhomeversion.common
 
-import com.example.rickandmortyhomeversion.api.InterfaceApi
+import com.example.rickandmortyhomeversion.main.api.InterfaceApi
 import com.example.rickandmortyhomeversion.utils.Utils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
