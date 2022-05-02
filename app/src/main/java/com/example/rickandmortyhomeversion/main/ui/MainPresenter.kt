@@ -24,7 +24,7 @@ class MainPresenter
         presenterScope.launch {
             try{
                 val data = interactor.getResults()
-                view?. = h
+                view?.showHeroList(data)
             }catch (t:Throwable){
                 Timber.e(t.message)
             }

@@ -8,7 +8,7 @@ class MainRemoteRepository(
     private val api: InterfaceApi
 ) : MainRepository {
     override suspend fun getResult(): List<Result> {
-        val data = api.getAllCharacters()
+        val data = api.getResults()
         return MainConverter.fromNetWork(data)
     }
 
