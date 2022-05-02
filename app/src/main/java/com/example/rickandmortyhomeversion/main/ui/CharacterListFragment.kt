@@ -1,26 +1,23 @@
-package com.example.rickandmortyhomeversion.ui
+package com.example.rickandmortyhomeversion.main.ui
 
-import CharacterFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmortyhomeversion.api.InterfaceApi
-import com.example.rickandmortyhomeversion.api.RetrofitClient
+import com.example.rickandmortyhomeversion.R
+import com.example.rickandmortyhomeversion.common.basemvp.BaseFragmentMvp
 import com.example.rickandmortyhomeversion.databinding.CharactersListBinding
 import com.example.rickandmortyhomeversion.models.CharacterDataResponse
 import com.example.rickandmortyhomeversion.models.ResultResponse
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class CharacterListFragment : Fragment(), MainContract {
+class CharacterListFragment :
+    BaseFragmentMvp<MainContract.View, MainContract.Presenter>(R.layout.characters_list),
+    MainContract.View {
 
-    private val api: InterfaceApi =
-        RetrofitClient.getRetrofit().create(InterfaceApi::class.java)
-
-    private val mainPresenter = MainPresenter(api)
-
+    override val presenter: MainPresenter by inject()
     private val adapter: MainAdapter by lazy {
         MainAdapter(onClick = { showDetailsItem(it) })
     }
@@ -30,44 +27,44 @@ class CharacterListFragment : Fragment(), MainContract {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = CharactersListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun overrideEnterAnimation(animation: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun overrideExitAnimation(animation: Int) {
+        TODO("Not yet implemented")
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-
-        mainPresenter.attach(this@CharacterListFragment)
         charactersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         charactersRecyclerView.adapter = adapter
-        mainPresenter.getCharacterDataFromApi()
-        Timber.i("Mama")
-    }
-
-    override fun showCharacters(data: CharacterDataResponse) {
-        Timber.i(toString())
-        adapter.setData(data.resultsResponse)
-
-    }
-
-    override fun dataFailure(t: Throwable) {
-        Timber.e(t.message)
+        presenter.getHeroList()
+        Timber.i("${presenter.getHeroList()}")
     }
 
     private fun showDetailsItem(resultResponse: ResultResponse) {
-        val fragment =  CharacterFragment()
+        val fragment = CharacterFragment(R.layout.character)
         val bundle = Bundle()
         bundle.putSerializable("result", resultResponse)
         fragment.arguments = bundle
-        replaceFragment(fragment)
+        changeFragment(fragment, R.id.fragmentContainer)
+    }
+
+    override fun showHeroList(data: CharacterDataResponse) {
+        adapter.setData(data.resultsResponse)
+    }
+
+    override fun failure(t: Throwable) {
+        Timber.e(t.message)
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mainPresenter.detach()
-    }
 }

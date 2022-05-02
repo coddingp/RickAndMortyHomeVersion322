@@ -1,4 +1,4 @@
-package com.example.rickandmortyhomeversion.ui
+package com.example.rickandmortyhomeversion.main.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -23,17 +23,16 @@ class MainAdapter(
         private val textView1: TextView = itemView.findViewById(R.id.itemTextView)
         private val textView2: TextView = itemView.findViewById(R.id.itemDescriptionTextView)
 
-        fun bind(resultsResponse: ResultResponse) {
-            Glide.with(itemView.context).load(resultsResponse.image).into(imageView)
-            textView1.text = resultsResponse.name
-            textView2.text = resultsResponse.id.toString()
-            itemView.setOnClickListener { onClick.invoke(resultsResponse) }
+        fun bind(resultResponse: ResultResponse) {
+            Glide.with(itemView.context).load(resultResponse.image).into(imageView)
+            textView1.text = resultResponse.name
+            textView2.text = resultResponse.id.toString()
+            itemView.setOnClickListener { onClick.invoke(resultResponse) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
         return MainViewHolder(itemView)
     }
 
@@ -50,4 +49,6 @@ class MainAdapter(
         Timber.i(list.toString())
         notifyDataSetChanged()
     }
+
+
 }

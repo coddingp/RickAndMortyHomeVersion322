@@ -1,4 +1,4 @@
-package com.example.rickandmortyhomeversion.ui
+package com.example.rickandmortyhomeversion.main.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction

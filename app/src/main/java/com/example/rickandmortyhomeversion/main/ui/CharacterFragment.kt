@@ -1,13 +1,16 @@
+package com.example.rickandmortyhomeversion.main.ui
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.annotation.LayoutRes
 import com.bumptech.glide.Glide
+import com.example.rickandmortyhomeversion.common.basemvp.BaseFragment
 import com.example.rickandmortyhomeversion.databinding.CharacterBinding
 import com.example.rickandmortyhomeversion.models.ResultResponse
 
-class CharacterFragment: Fragment() {
+class CharacterFragment(@LayoutRes layoutRes: Int): BaseFragment(layoutRes) {
 
     private lateinit var binding: CharacterBinding
 
@@ -30,5 +33,13 @@ class CharacterFragment: Fragment() {
             textViewStatus.text = "Status: ${data.status}"
             textViewSpecies.text = "Species: ${data.species}"
         }
+    }
+
+    override fun overrideEnterAnimation(animation: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun overrideExitAnimation(animation: Int) {
+        TODO("Not yet implemented")
     }
 }

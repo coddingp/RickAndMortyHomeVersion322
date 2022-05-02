@@ -1,14 +1,12 @@
-package com.example.rickandmortyhomeversion.ui
+package com.example.rickandmortyhomeversion.main.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.rickandmortyhomeversion.R
+import com.example.rickandmortyhomeversion.common.basemvp.BaseActivity
 import com.example.rickandmortyhomeversion.databinding.ActivityMainBinding
-import com.example.rickandmortyhomeversion.models.ResultResponse
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    lateinit var resultResponse: ResultResponse
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -17,9 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, CharacterListFragment())
-            .commit()
+        val characterListFragment = CharacterListFragment()
+        changeFragment(characterListFragment, R.id.fragmentContainer)
     }
+
 }

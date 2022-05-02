@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/characterActivity"
     style="@style/LLStyleForDetails"
-    tools:context="ui.MainActivity">
+    tools:context=".main.ui.MainActivity">
 
     <ImageView
         android:id="@+id/characterImageView"
