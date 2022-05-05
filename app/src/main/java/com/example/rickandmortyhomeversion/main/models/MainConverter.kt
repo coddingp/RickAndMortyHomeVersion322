@@ -7,7 +7,7 @@ import com.example.rickandmortyhomeversion.main.api.model.OriginResponse
 object MainConverter {
     fun fromNetWork(response: CharacterDataResponse): List<Result> {
 
-        return response.resultsResponse.map { result ->
+        return response.results.map { result ->
             Result(
                 id = result.id,
                 name = result.name,
@@ -15,8 +15,8 @@ object MainConverter {
                 species = result.species,
                 type = result.type,
                 gender = result.gender,
-                origin = (::fromNetWork),
-                location = (::fromNetWork),
+                origin = fromNetwork(result.origin),
+                location = fromNetwork(result.location),
                 image = result.image,
                 episode = result.episode,
                 url = result.url,
@@ -25,13 +25,13 @@ object MainConverter {
         }
     }
 
-    private fun fromNetWork(response: OriginResponse) =
+    private fun fromNetwork(response: OriginResponse) =
         Origin(
             name = response.name,
             url = response.url
         )
 
-    private fun fromNetWork(response: LocationResponse) =
+    private fun fromNetwork(response: LocationResponse) =
         Location(
             name = response.name,
             url = response.url

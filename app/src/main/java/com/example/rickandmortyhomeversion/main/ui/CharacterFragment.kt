@@ -8,8 +8,9 @@ import androidx.annotation.LayoutRes
 import com.bumptech.glide.Glide
 import com.example.rickandmortyhomeversion.common.basemvp.BaseFragment
 import com.example.rickandmortyhomeversion.databinding.CharacterBinding
+import com.example.rickandmortyhomeversion.main.models.Result
 
-class CharacterFragment(@LayoutRes layoutRes: Int): BaseFragment(layoutRes) {
+class CharacterFragment(@LayoutRes layoutRes: Int) : BaseFragment(layoutRes) {
 
     private lateinit var binding: CharacterBinding
 
@@ -24,13 +25,14 @@ class CharacterFragment(@LayoutRes layoutRes: Int): BaseFragment(layoutRes) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = arguments?.getSerializable("result") as ResultResponse
-        with (binding) {
+        val data =
+            arguments?.getParcelable<com.example.rickandmortyhomeversion.main.models.Result>("result") as Result
+        with(binding) {
             context?.let { Glide.with(it).load(data.image).into(characterImageView) }
-            textViewName.text = "Name: ${data.name}"
-            textViewGender.text = "Gender: ${data.gender}"
-            textViewStatus.text = "Status: ${data.status}"
-            textViewSpecies.text = "Species: ${data.species}"
+            textViewName.text = buildString { append("Name: ${data.name}") }
+            textViewGender.text = buildString { append("Gender: ${data.gender}") }
+            textViewStatus.text = buildString { append("Status: ${data.status}") }
+            textViewSpecies.text = buildString { append("Species: ${data.species}") }
         }
     }
 

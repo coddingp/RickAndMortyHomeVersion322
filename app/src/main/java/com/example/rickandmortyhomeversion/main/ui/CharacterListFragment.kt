@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyhomeversion.R
 import com.example.rickandmortyhomeversion.common.basemvp.BaseFragmentMvp
 import com.example.rickandmortyhomeversion.databinding.CharactersListBinding
+import com.example.rickandmortyhomeversion.main.models.Result
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -48,17 +49,18 @@ class CharacterListFragment :
         Timber.i("${presenter.getHeroList()}")
     }
 
-    private fun showDetailsItem(resultResponse: ResultResponse) {
+    private fun showDetailsItem(result: Result) {
         val fragment = CharacterFragment(R.layout.character)
         val bundle = Bundle()
-        bundle.putSerializable("result", resultResponse)
+        bundle.putParcelable("result", result)
         fragment.arguments = bundle
         changeFragment(fragment, R.id.fragmentContainer)
     }
 
-    override fun showHeroList(data: CharacterDataResponse) {
-        adapter.setData(data.resultsResponse)
+    override fun showHeroList(result: List<Result>) {
+        adapter.setData(result)
     }
+
 
     override fun failure(t: Throwable) {
         Timber.e(t.message)

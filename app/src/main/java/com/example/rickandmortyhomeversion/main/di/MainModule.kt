@@ -1,4 +1,4 @@
-package com.example.rickandmortyhomeversion.main
+package com.example.rickandmortyhomeversion.main.di
 
 import com.example.rickandmortyhomeversion.main.interactor.MainInteractor
 import com.example.rickandmortyhomeversion.main.repository.MainRemoteRepository
