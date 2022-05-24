@@ -49,6 +49,4 @@ class MainAdapter(
         Timber.i(list.toString())
         notifyDataSetChanged()
     }
-
-
 }

@@ -14,7 +14,6 @@ object MainModule {
             val interactor = MainInteractor(get())
             interactor
         } bind MainInteractor::class
-
         single<MainRemoteRepository> { MainRemoteRepository(get()) }
     }
 }

@@ -10,7 +10,9 @@ import com.example.rickandmortyhomeversion.common.basemvp.BaseFragment
 import com.example.rickandmortyhomeversion.databinding.CharacterBinding
 import com.example.rickandmortyhomeversion.main.models.Result
 
-class CharacterFragment(@LayoutRes layoutRes: Int) : BaseFragment(layoutRes) {
+class CharacterFragment(
+    @LayoutRes layoutRes: Int
+) : BaseFragment(layoutRes) {
 
     private lateinit var binding: CharacterBinding
 
