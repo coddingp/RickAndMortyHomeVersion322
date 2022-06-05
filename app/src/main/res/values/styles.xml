@@ -12,9 +12,7 @@
     </style>
 
     <style name="detailedImageStyle" parent="CardView">
-        <item name="android:contentDescription">character_description"
-        </item>
-
+        <item name="android:contentDescription">character_description"</item>
         <item name="android:layout_height">216dp</item>
         <item name="android:layout_width">216dp</item>
         <item name="android:layout_margin">8dp</item>
@@ -35,6 +33,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">32sp</item>
         <item name="android:layout_margin">16dp</item>
+        <item name="android:background">@color/orange</item>
         <item name="android:padding">16dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
@@ -45,7 +44,7 @@
         <item name="android:orientation">vertical</item>
         <item name="android:layout_margin">4dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">#FF5722</item>
+        <item name="android:background">@color/orange</item>
     </style>
 
     <style name="LLStyleForDetails" parent="Widget.Material3.DrawerLayout">
@@ -53,7 +52,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:background">#1766DC</item>
+        <item name="android:background">@color/cardview_dark_background</item>
     </style>
 
 </resources>

@@ -1,7 +1,9 @@
 package com.example.rickandmortyhomeversion.common
 
+import com.example.rickandmortyhomeversion.R
 import com.example.rickandmortyhomeversion.main.api.InterfaceApi
 import com.example.rickandmortyhomeversion.utils.Utils
+import com.example.rickandmortyhomeversion.utils.Utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -17,7 +19,7 @@ object CommonModule {
                 .addInterceptor(interceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl(Utils.baseUrl)
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

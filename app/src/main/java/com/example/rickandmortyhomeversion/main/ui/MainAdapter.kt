@@ -8,26 +8,29 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rickandmortyhomeversion.R
-import com.example.rickandmortyhomeversion.main.models.Result
+import com.example.rickandmortyhomeversion.main.models.ResultParced
 import timber.log.Timber
 
 class MainAdapter(
-    val onClick: (Result) -> Unit
+    val onClick: (ResultParced) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private val characters = mutableListOf<com.example.rickandmortyhomeversion.main.models.Result>()
-
+    private val characters = mutableListOf<ResultParced>()
 
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.itemImageView)
         private val textView1: TextView = itemView.findViewById(R.id.itemTextView)
         private val textView2: TextView = itemView.findViewById(R.id.itemDescriptionTextView)
 
-        fun bind(result: Result) {
-            Glide.with(itemView.context).load(result.image).into(imageView)
-            textView1.text = result.name
-            textView2.text = result.id.toString()
-            itemView.setOnClickListener { onClick.invoke(result) }
+        fun bind(resultParced: ResultParced) {
+            Glide.with(itemView.context).load(resultParced.image).placeholder(R.drawable.landscape_placeholder).into(imageView)
+            textView1.text = resultParced.name
+            textView2.text = resultParced.id.toString()
+            itemView.setOnClickListener { onClick.invoke(resultParced) }
+        }
+
+        fun detach() {
+            Glide.with(itemView.context).clear(imageView)
         }
     }
 
@@ -41,9 +44,14 @@ class MainAdapter(
         holder.bind(listItem)
     }
 
+    override fun onViewRecycled(holder: MainViewHolder) {
+        super.onViewRecycled(holder)
+        holder.detach()
+    }
+
     override fun getItemCount() = characters.size
 
-    fun setData(list: List<Result>) {
+    fun setData(list: List<ResultParced>) {
         characters.clear()
         characters.addAll(list)
         Timber.i(list.toString())

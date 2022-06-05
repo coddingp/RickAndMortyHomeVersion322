@@ -1,13 +1,12 @@
-package com.example.rickandmortyhomeversion.common.basemvp
+package com.example.rickandmortyhomeversion.common.mvvm
 
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
-abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes),
-    BaseFragmentContract {
-    fun changeFragment(fragment: Fragment, id: Int) {
+abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes){
+    fun replaceFragment(fragment: Fragment, id: Int) {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.addToBackStack(null)

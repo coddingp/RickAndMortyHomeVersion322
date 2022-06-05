@@ -4,22 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmortyhomeversion.R
-import com.example.rickandmortyhomeversion.common.basemvp.BaseFragmentMvp
+import com.example.rickandmortyhomeversion.common.mvvm.BaseFragment
 import com.example.rickandmortyhomeversion.databinding.CharactersListBinding
-import com.example.rickandmortyhomeversion.main.models.Result
-import org.koin.android.ext.android.inject
-import timber.log.Timber
+import com.example.rickandmortyhomeversion.main.models.ResultParced
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CharacterListFragment :
-    BaseFragmentMvp<MainContract.View, MainContract.Presenter>(R.layout.characters_list),
-    MainContract.View {
+class CharacterListFragment(
+    @LayoutRes layoutRes: Int
+) : BaseFragment(layoutRes) {
 
-    override val presenter: MainPresenter by inject()
     private val adapter: MainAdapter by lazy {
         MainAdapter(onClick = { showDetailsItem(it) })
     }
+
+    private val viewModel: HeroListViewModel by viewModel()
 
     private lateinit var binding: CharactersListBinding
 
@@ -32,39 +33,22 @@ class CharacterListFragment :
         return binding.root
     }
 
-    override fun overrideEnterAnimation(animation: Int) {
-        TODO("Not yet implemented")
-    }
 
-    override fun overrideExitAnimation(animation: Int) {
-        TODO("Not yet implemented")
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        charactersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        charactersRecyclerView.adapter = adapter
-        presenter.getHeroList()
-        Timber.i("${presenter.getHeroList()}")
+    charactersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+    charactersRecyclerView.adapter = adapter
+        viewModel.liveData.observe(viewLifecycleOwner) { data ->
+            adapter.setData(data)
+        }
+        viewModel.loadCharacters()
     }
 
-    private fun showDetailsItem(result: Result) {
+    private fun showDetailsItem(resultParced: ResultParced) {
         val fragment = CharacterFragment(R.layout.character)
         val bundle = Bundle()
-        bundle.putParcelable("result", result)
+        bundle.putParcelable("results", resultParced)
         fragment.arguments = bundle
-        changeFragment(fragment, R.id.fragmentContainer)
+        replaceFragment(fragment, R.id.fragmentContainer)
     }
-
-    override fun showHeroList(result: List<Result>) {
-        adapter.setData(result)
-    }
-
-
-    override fun failure(t: Throwable) {
-        Timber.e(t.message)
-    }
-
-
 }
